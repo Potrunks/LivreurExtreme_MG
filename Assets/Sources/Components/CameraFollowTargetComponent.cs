@@ -18,14 +18,18 @@ public class CameraFollowTargetComponent : MonoBehaviour
 
     private void Awake()
     {
-        TransformDto transformDto = _transformBusiness.CalculateTransformRelativeToTarget(Target, OffsetPosition, OffsetDegreesRotation);
-        transform.position = transformDto.Position;
-        transform.eulerAngles = transformDto.Rotation.Value;
+        FollowTarget();
     }
 
     private void Update()
     {
-        TransformDto transformDto = _transformBusiness.CalculateTransformRelativeToTarget(Target, OffsetPosition, null);
+        FollowTarget();
+    }
+
+    private void FollowTarget()
+    {
+        TransformDto transformDto = _transformBusiness.CalculateTransformRelativeToTarget(Target, OffsetPosition, OffsetDegreesRotation);
         transform.position = transformDto.Position;
+        transform.eulerAngles = transformDto.Rotation;
     }
 }

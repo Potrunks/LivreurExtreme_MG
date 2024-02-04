@@ -8,7 +8,7 @@ namespace Assets.Sources.Business.Implementation
     {
         public TransformBusiness() { }
 
-        public TransformDto CalculateTransformRelativeToTarget(Transform target, Vector3 offsetPosition, Vector3? offsetDegreesRotation)
+        public TransformDto CalculateTransformRelativeToTarget(Transform target, Vector3 offsetPosition, Vector3 offsetDegreesRotation)
         {
             return new TransformDto
                 (
@@ -18,11 +18,11 @@ namespace Assets.Sources.Business.Implementation
                         target.position.y + offsetPosition.y,
                         target.position.z + offsetPosition.z
                     ),
-                    offsetDegreesRotation == null ? null : new Vector3
+                    new Vector3
                     (
-                        target.eulerAngles.x + offsetDegreesRotation.Value.x,
-                        target.eulerAngles.y + offsetDegreesRotation.Value.y,
-                        target.eulerAngles.z + offsetDegreesRotation.Value.z
+                        target.eulerAngles.x + offsetDegreesRotation.x,
+                        target.eulerAngles.y + offsetDegreesRotation.y,
+                        target.eulerAngles.z + offsetDegreesRotation.z
                     )
                 );
         }
