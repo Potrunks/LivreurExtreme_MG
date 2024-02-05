@@ -7,13 +7,13 @@ namespace Assets.Sources.Business.Interface
     public interface ITransformBusiness
     {
         /// <summary>
-        /// Calculate new transform relative to target.
+        /// Calculate transform values for look at the target (with a reference position).
         /// </summary>
-        TransformDto CalculateTransformRelativeToTarget(Transform target, Vector3 offsetPosition, Vector3 offsetDegreesRotation);
+        TransformDto LookAt(Transform target, Vector3 offsetPosition, Vector3 offsetDegreesRotation, SplineContainer splineContainerReference);
 
         /// <summary>
-        /// Swipe GameObject transform to another spline.
+        /// Swipe scooter model to another spline.
         /// </summary>
-        void SwipeSpline(SplineAnimate splineAnimate, RoadSplinesComponent roadSplines, Transform transformToSwipe, float swipeTransitionDuration, float forwardTransitionDistance, bool isLeftSwipe);
+        void SwipeSpline(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplines, bool isLeftSwipe);
     }
 }

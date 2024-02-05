@@ -10,13 +10,13 @@ namespace Assets.Sources.Business.Implementation
     {
         public TransformBusiness() { }
 
-        public TransformDto CalculateTransformRelativeToTarget(Transform target, Vector3 offsetPosition, Vector3 offsetDegreesRotation)
+        public TransformDto LookAt(Transform target, Vector3 offsetPosition, Vector3 offsetDegreesRotation, SplineContainer splineContainerReference)
         {
             return new TransformDto
                 (
                     new Vector3
                     (
-                        target.position.x + offsetPosition.x,
+                        splineContainerReference.transform.position.x + offsetPosition.x,
                         target.position.y + offsetPosition.y,
                         target.position.z + offsetPosition.z
                     ),
@@ -29,27 +29,29 @@ namespace Assets.Sources.Business.Implementation
                 );
         }
 
-        public void SwipeSpline(SplineAnimate splineAnimate, RoadSplinesComponent roadSplines, Transform transformToSwipe, float swipeTransitionDuration, float forwardTransitionDistance, bool isLeftSwipe)
+        public void SwipeSpline(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplines, bool isLeftSwipe)
         {
-            if ((isLeftSwipe && splineAnimate.Container == roadSplines.LeftSpline) || (!isLeftSwipe && splineAnimate.Container == roadSplines.RightSpline))
+            if ((isLeftSwipe && scooterMoveComponent.ScooterSplineAnimate.Container == roadSplines.LeftSpline)
+                || (!isLeftSwipe && scooterMoveComponent.ScooterSplineAnimate.Container == roadSplines.RightSpline))
             {
                 return;
             }
 
             Vector3 target = new Vector3();
-            SplineContainer newSplineContainer = splineAnimate.Container;
+            SplineContainer newSplineContainer = scooterMoveComponent.ScooterSplineAnimate.Container;
 
-            if (splineAnimate.Container == roadSplines.RightSpline || splineAnimate.Container == roadSplines.LeftSpline)
+            if (scooterMoveComponent.ScooterSplineAnimate.Container == roadSplines.RightSpline
+                || scooterMoveComponent.ScooterSplineAnimate.Container == roadSplines.LeftSpline)
             {
                 newSplineContainer = roadSplines.MiddleSpline;
             }
 
-            if (isLeftSwipe && splineAnimate.Container == roadSplines.MiddleSpline)
+            if (isLeftSwipe && scooterMoveComponent.ScooterSplineAnimate.Container == roadSplines.MiddleSpline)
             {
                 newSplineContainer = roadSplines.LeftSpline;
             }
 
-            if (!isLeftSwipe && splineAnimate.Container == roadSplines.MiddleSpline)
+            if (!isLeftSwipe && scooterMoveComponent.ScooterSplineAnimate.Container == roadSplines.MiddleSpline)
             {
                 newSplineContainer = roadSplines.RightSpline;
             }
@@ -58,14 +60,16 @@ namespace Assets.Sources.Business.Implementation
             (
                 newSplineContainer.transform.position.x,
                 newSplineContainer.transform.position.y,
-                transformToSwipe.position.z + forwardTransitionDistance
+                scooterMoveComponent.transform.position.z + scooterMoveComponent.ForwardTransitionDistance
             );
-            splineAnimate.Container = null;
+            scooterMoveComponent.ScooterSplineAnimate.Container = null;
 
-            transformToSwipe.DOMove(target, swipeTransitionDuration)
+            scooterMoveComponent._isSwiping = true;
+            scooterMoveComponent.transform.DOMove(target, scooterMoveComponent.SwipeTransitionDuration)
                             .OnComplete(() =>
                             {
-                                splineAnimate.Container = newSplineContainer;
+                                scooterMoveComponent.ScooterSplineAnimate.Container = newSplineContainer;
+                                scooterMoveComponent._isSwiping = false;
                             });
         }
     }

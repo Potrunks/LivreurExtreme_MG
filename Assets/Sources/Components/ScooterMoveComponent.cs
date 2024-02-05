@@ -15,6 +15,9 @@ public class ScooterMoveComponent : MonoBehaviour
     [field: SerializeField]
     public float ForwardTransitionDistance { get; set; }
 
+    [HideInInspector]
+    public bool _isSwiping = false;
+
     private ITransformBusiness _transformBusiness = new TransformBusiness();
 
     public void Start()
@@ -24,17 +27,17 @@ public class ScooterMoveComponent : MonoBehaviour
 
     public void GoLeft(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !_isSwiping)
         {
-            _transformBusiness.SwipeSpline(ScooterSplineAnimate, RoadSplinesComponent.Instance, transform, SwipeTransitionDuration, ForwardTransitionDistance, true);
+            _transformBusiness.SwipeSpline(this, RoadSplinesComponent.Instance, true);
         }
     }
 
     public void GoRight(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !_isSwiping)
         {
-            _transformBusiness.SwipeSpline(ScooterSplineAnimate, RoadSplinesComponent.Instance, transform, SwipeTransitionDuration, ForwardTransitionDistance, false);
+            _transformBusiness.SwipeSpline(this, RoadSplinesComponent.Instance, false);
         }
     }
 }

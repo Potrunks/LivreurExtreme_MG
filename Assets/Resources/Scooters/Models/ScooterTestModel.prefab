@@ -208,4 +208,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ScooterSplineAnimate>k__BackingField: {fileID: 6052360818389834378}
   <SwipeTransitionDuration>k__BackingField: 0.25
-  <ForwardTransitionDistance>k__BackingField: 0.25
+  <ForwardTransitionDistance>k__BackingField: 2.5
+  _isSwiping: 0
