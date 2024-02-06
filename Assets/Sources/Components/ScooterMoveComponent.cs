@@ -15,13 +15,13 @@ public class ScooterMoveComponent : MonoBehaviour
     [field: SerializeField]
     public float ForwardTransitionDistance { get; set; }
 
-    [HideInInspector]
-    public bool _isSwiping = false;
+    private bool _isSwiping = false;
 
     private ITransformBusiness _transformBusiness = new TransformBusiness();
 
     public void Start()
     {
+        _transformBusiness.AdjustHeightSplinesRelativeToScooter(this, RoadSplinesComponent.Instance.GetSplineContainers());
         ScooterSplineAnimate.Container = RoadSplinesComponent.Instance.StartSpline;
     }
 
@@ -39,5 +39,10 @@ public class ScooterMoveComponent : MonoBehaviour
         {
             _transformBusiness.SwipeSpline(this, RoadSplinesComponent.Instance, false);
         }
+    }
+
+    public void SetIsSwiping(bool value)
+    {
+        _isSwiping = value;
     }
 }

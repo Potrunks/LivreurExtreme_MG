@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Shared.Dtos;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -15,5 +16,10 @@ namespace Assets.Sources.Business.Interface
         /// Swipe scooter model to another spline.
         /// </summary>
         void SwipeSpline(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplines, bool isLeftSwipe);
+
+        /// <summary>
+        /// Adjust height position of selected splines relative to scooter.
+        /// </summary>
+        void AdjustHeightSplinesRelativeToScooter(ScooterMoveComponent scooterMoveComponent, List<SplineContainer> splineContainers);
     }
 }

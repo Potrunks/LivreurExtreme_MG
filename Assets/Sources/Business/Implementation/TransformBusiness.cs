@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Business.Interface;
 using Assets.Sources.Shared.Dtos;
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -64,13 +65,26 @@ namespace Assets.Sources.Business.Implementation
             );
             scooterMoveComponent.ScooterSplineAnimate.Container = null;
 
-            scooterMoveComponent._isSwiping = true;
+            scooterMoveComponent.SetIsSwiping(true);
             scooterMoveComponent.transform.DOMove(target, scooterMoveComponent.SwipeTransitionDuration)
                             .OnComplete(() =>
                             {
                                 scooterMoveComponent.ScooterSplineAnimate.Container = newSplineContainer;
-                                scooterMoveComponent._isSwiping = false;
+                                scooterMoveComponent.SetIsSwiping(false);
                             });
+        }
+
+        public void AdjustHeightSplinesRelativeToScooter(ScooterMoveComponent scooterMoveComponent, List<SplineContainer> splineContainers)
+        {
+            foreach (SplineContainer splineContainer in splineContainers)
+            {
+                splineContainer.transform.position = new Vector3
+                (
+                    splineContainer.transform.position.x,
+                    scooterMoveComponent.transform.localScale.y / 2,
+                    splineContainer.transform.position.z
+                );
+            }
         }
     }
 }
