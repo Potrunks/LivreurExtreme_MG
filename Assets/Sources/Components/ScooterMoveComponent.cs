@@ -1,5 +1,8 @@
 using Assets.Sources.Business.Implementation;
 using Assets.Sources.Business.Interface;
+using Assets.Sources.Resources;
+using Assets.Sources.StateMachines.Implementation.ScooterMoveState;
+using Assets.Sources.StateMachines.Interface;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
@@ -15,34 +18,42 @@ public class ScooterMoveComponent : MonoBehaviour
     [field: SerializeField]
     public float ForwardTransitionDistance { get; set; }
 
-    private bool _isSwiping = false;
+    public ITransformBusiness TransformBusiness { get; set; } = new TransformBusiness();
 
-    private ITransformBusiness _transformBusiness = new TransformBusiness();
+    public IScooterMoveState CurrentScooterMoveState { get; set; } = new ForwardScooterMoveState();
+
+    private IScooterMoveState NextScooterMoveState { get; set; }
 
     public void Start()
     {
-        _transformBusiness.AdjustHeightSplinesRelativeToScooter(this, RoadSplinesComponent.Instance.GetSplineContainers());
+        TransformBusiness.AdjustHeightSplinesRelativeToScooter(this, RoadSplinesComponent.Instance.GetSplineContainers());
         ScooterSplineAnimate.Container = RoadSplinesComponent.Instance.StartSpline;
+    }
+
+    private void Update()
+    {
+        NextScooterMoveState = CurrentScooterMoveState.CheckChangeState(this, RoadSplinesComponent.Instance);
+        if (NextScooterMoveState != null)
+        {
+            CurrentScooterMoveState.OnExit(this, RoadSplinesComponent.Instance);
+            CurrentScooterMoveState = NextScooterMoveState;
+            CurrentScooterMoveState.OnEnter(this, RoadSplinesComponent.Instance);
+        }
     }
 
     public void GoLeft(InputAction.CallbackContext context)
     {
-        if (context.started && !_isSwiping)
+        if (context.started)
         {
-            _transformBusiness.SwipeSpline(this, RoadSplinesComponent.Instance, true);
+            CurrentScooterMoveState.OnInput(ScooterMoveInputAction.LEFT);
         }
     }
 
     public void GoRight(InputAction.CallbackContext context)
     {
-        if (context.started && !_isSwiping)
+        if (context.started)
         {
-            _transformBusiness.SwipeSpline(this, RoadSplinesComponent.Instance, false);
+            CurrentScooterMoveState.OnInput(ScooterMoveInputAction.RIGHT);
         }
-    }
-
-    public void SetIsSwiping(bool value)
-    {
-        _isSwiping = value;
     }
 }
