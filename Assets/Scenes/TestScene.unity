@@ -1169,8 +1169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 1023065031}
-  <OffsetPosition>k__BackingField: {x: 0, y: 5, z: -6}
-  <OffsetDegreesRotation>k__BackingField: {x: 25, y: 0, z: 0}
+  <OffsetPosition>k__BackingField: {x: 0, y: 5, z: -7}
+  <OffsetDegreesRotation>k__BackingField: {x: 20, y: 0, z: 0}
 --- !u!1001 &969448290
 PrefabInstance:
   m_ObjectHideFlags: 0

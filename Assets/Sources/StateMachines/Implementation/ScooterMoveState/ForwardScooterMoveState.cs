@@ -15,6 +15,11 @@ namespace Assets.Sources.StateMachines.Implementation.ScooterMoveState
             };
         }
 
+        public override bool CanSwipe()
+        {
+            return true;
+        }
+
         public override IScooterMoveState CheckChangeState(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplinesComponent)
         {
             if (NextState != null)

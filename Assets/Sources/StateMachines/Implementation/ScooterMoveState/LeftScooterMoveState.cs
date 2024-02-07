@@ -5,6 +5,11 @@ namespace Assets.Sources.StateMachines.Implementation.ScooterMoveState
 {
     public class LeftScooterMoveState : ScooterMoveState
     {
+        public override bool CanSwipe()
+        {
+            return false;
+        }
+
         public override IScooterMoveState CheckChangeState(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplinesComponent)
         {
             if (NextState != null)

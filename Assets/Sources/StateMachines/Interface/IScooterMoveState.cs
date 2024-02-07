@@ -17,5 +17,7 @@ namespace Assets.Sources.StateMachines.Interface
         void OnFixedUpdate(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplinesComponent);
 
         void SetNextState(IScooterMoveState nextScooterMoveState);
+
+        bool CanSwipe();
     }
 }

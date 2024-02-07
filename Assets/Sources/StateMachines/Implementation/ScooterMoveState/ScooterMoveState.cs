@@ -8,6 +8,8 @@ namespace Assets.Sources.StateMachines.Implementation.ScooterMoveState
     {
         public IScooterMoveState NextState { get; set; }
         public IDictionary<ScooterMoveInputAction, IScooterMoveState> StateByInputAction { get; set; }
+
+        public abstract bool CanSwipe();
         public abstract IScooterMoveState CheckChangeState(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplinesComponent);
         public abstract void OnEnter(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplinesComponent);
         public abstract void OnExit(ScooterMoveComponent scooterMoveComponent, RoadSplinesComponent roadSplinesComponent);

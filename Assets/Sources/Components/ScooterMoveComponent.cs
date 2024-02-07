@@ -18,6 +18,9 @@ public class ScooterMoveComponent : MonoBehaviour
     [field: SerializeField]
     public float ForwardTransitionDistance { get; set; }
 
+    [field: SerializeField]
+    public float SwipeTouchscreenThreshold { get; set; }
+
     public ITransformBusiness TransformBusiness { get; set; } = new TransformBusiness();
 
     public IScooterMoveState CurrentScooterMoveState { get; set; } = new ForwardScooterMoveState();
@@ -43,7 +46,7 @@ public class ScooterMoveComponent : MonoBehaviour
 
     public void GoLeft(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && CurrentScooterMoveState.CanSwipe())
         {
             CurrentScooterMoveState.OnInput(ScooterMoveInputAction.LEFT);
         }
@@ -51,9 +54,27 @@ public class ScooterMoveComponent : MonoBehaviour
 
     public void GoRight(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && CurrentScooterMoveState.CanSwipe())
         {
             CurrentScooterMoveState.OnInput(ScooterMoveInputAction.RIGHT);
+        }
+    }
+
+    public void Swipe(InputAction.CallbackContext context)
+    {
+        if (CurrentScooterMoveState.CanSwipe())
+        {
+            Vector2 swipeDelta = context.ReadValue<Vector2>();
+
+            if (swipeDelta.x < (-1 * SwipeTouchscreenThreshold))
+            {
+                CurrentScooterMoveState.OnInput(ScooterMoveInputAction.LEFT);
+            }
+
+            if (swipeDelta.x > SwipeTouchscreenThreshold)
+            {
+                CurrentScooterMoveState.OnInput(ScooterMoveInputAction.RIGHT);
+            }
         }
     }
 }
