@@ -2,7 +2,6 @@
 using Assets.Sources.Shared.Dtos;
 using Assets.Sources.StateMachines.Implementation.ScooterMoveState;
 using DG.Tweening;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -73,19 +72,6 @@ namespace Assets.Sources.Business.Implementation
                                 scooterMoveComponent.ScooterSplineAnimate.Container = newSplineContainer;
                                 scooterMoveComponent.CurrentScooterMoveState.SetNextState(new ForwardScooterMoveState());
                             });
-        }
-
-        public void AdjustHeightSplinesRelativeToScooter(ScooterMoveComponent scooterMoveComponent, List<SplineContainer> splineContainers)
-        {
-            foreach (SplineContainer splineContainer in splineContainers)
-            {
-                splineContainer.transform.position = new Vector3
-                (
-                    splineContainer.transform.position.x,
-                    scooterMoveComponent.transform.localScale.y / 2,
-                    splineContainer.transform.position.z
-                );
-            }
         }
     }
 }

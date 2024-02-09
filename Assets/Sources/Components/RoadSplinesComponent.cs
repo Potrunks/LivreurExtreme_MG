@@ -36,9 +36,4 @@ public class RoadSplinesComponent : MonoBehaviour
         _splineContainers.Add(MiddleSpline);
         _splineContainers.Add(RightSpline);
     }
-
-    public List<SplineContainer> GetSplineContainers()
-    {
-        return _splineContainers;
-    }
 }

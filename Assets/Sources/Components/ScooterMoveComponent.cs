@@ -29,8 +29,8 @@ public class ScooterMoveComponent : MonoBehaviour
 
     public void Start()
     {
-        TransformBusiness.AdjustHeightSplinesRelativeToScooter(this, RoadSplinesComponent.Instance.GetSplineContainers());
         ScooterSplineAnimate.Container = RoadSplinesComponent.Instance.StartSpline;
+        ScooterSplineAnimate.Play();
     }
 
     private void Update()
