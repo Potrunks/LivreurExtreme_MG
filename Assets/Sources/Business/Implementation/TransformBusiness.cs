@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Business.Interface;
 using Assets.Sources.Shared.Dtos;
+using Assets.Sources.StateMachines.Implementation.ScooterMoveState;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -34,6 +35,7 @@ namespace Assets.Sources.Business.Implementation
             if ((isLeftSwipe && scooterMoveComponent.ScooterSplineAnimate.Container == roadSplines.LeftSpline)
                 || (!isLeftSwipe && scooterMoveComponent.ScooterSplineAnimate.Container == roadSplines.RightSpline))
             {
+                scooterMoveComponent.CurrentScooterMoveState.SetNextState(new ForwardScooterMoveState());
                 return;
             }
 
@@ -64,12 +66,11 @@ namespace Assets.Sources.Business.Implementation
             );
             scooterMoveComponent.ScooterSplineAnimate.Container = null;
 
-            scooterMoveComponent._isSwiping = true;
             scooterMoveComponent.transform.DOMove(target, scooterMoveComponent.SwipeTransitionDuration)
                             .OnComplete(() =>
                             {
                                 scooterMoveComponent.ScooterSplineAnimate.Container = newSplineContainer;
-                                scooterMoveComponent._isSwiping = false;
+                                scooterMoveComponent.CurrentScooterMoveState.SetNextState(new ForwardScooterMoveState());
                             });
         }
     }
