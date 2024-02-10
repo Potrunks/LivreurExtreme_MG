@@ -1,0 +1,398 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3732933584495898612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6249931247772745404}
+  - component: {fileID: 4225630324864837609}
+  - component: {fileID: -8218479885424870619}
+  - component: {fileID: 4760117036805640024}
+  - component: {fileID: 703805746525413282}
+  - component: {fileID: 118976408077272799}
+  m_Layer: 0
+  m_Name: GreenScooterPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6249931247772745404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732933584495898612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1332122818073267305}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4225630324864837609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732933584495898612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8580db4eaf2746e4ebd3b79afb483cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ScooterSplineAnimate>k__BackingField: {fileID: -8218479885424870619}
+  <SwipeTransitionDuration>k__BackingField: 0.25
+  <ForwardTransitionDistance>k__BackingField: 2.25
+  <SwipeTouchscreenThreshold>k__BackingField: 30
+--- !u!114 &-8218479885424870619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732933584495898612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_LoopMode: 1
+  m_Method: 1
+  m_Duration: 1
+  m_MaxSpeed: 10
+  m_EasingMode: 0
+  m_AlignmentMode: 1
+  m_ObjectForwardAxis: 2
+  m_ObjectUpAxis: 1
+  m_StartOffset: 0
+--- !u!114 &4760117036805640024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732933584495898612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f5a4924bf4f06d941bcc6345c2278d4b,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4225630324864837609}
+        m_TargetAssemblyTypeName: ScooterMoveComponent, Assembly-CSharp
+        m_MethodName: GoLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9e9eb23e-03d1-4dd8-aac9-d98af44c67c9
+    m_ActionName: Drive/Left[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4225630324864837609}
+        m_TargetAssemblyTypeName: ScooterMoveComponent, Assembly-CSharp
+        m_MethodName: GoRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c14f200-a9ff-4719-999f-77d7c6214e87
+    m_ActionName: Drive/Right[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4225630324864837609}
+        m_TargetAssemblyTypeName: ScooterMoveComponent, Assembly-CSharp
+        m_MethodName: Swipe
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9936efb1-612d-4624-9c27-12ba02a861ff
+    m_ActionName: Drive/Swipe[/Device Simulator Touchscreen/primaryTouch/delta]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Drive
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!54 &703805746525413282
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732933584495898612}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &118976408077272799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732933584495898612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3df43391e0598a47842cb2804601169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ScooterMoveComponent>k__BackingField: {fileID: 4225630324864837609}
+  <RecoverCollisionDuration>k__BackingField: 3
+  <NormalModel>k__BackingField: {fileID: 530393222204546101}
+  <HitModel>k__BackingField: {fileID: 2121160990223421075}
+--- !u!1 &5434846629006116245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1332122818073267305}
+  m_Layer: 0
+  m_Name: Renderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1332122818073267305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5434846629006116245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 871311836823586447}
+  - {fileID: 1595452954203034665}
+  m_Father: {fileID: 6249931247772745404}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &944569848001701054
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1332122818073267305}
+    m_Modifications:
+    - target: {fileID: 1185618691367201325, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_Name
+      value: GreenScooterTransparentModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185618691367201325, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: afbb509a07c93ba49ae86bac4e67bf8a, type: 3}
+--- !u!4 &1595452954203034665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1963562048322351255, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 944569848001701054}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2121160990223421075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1185618691367201325, guid: afbb509a07c93ba49ae86bac4e67bf8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 944569848001701054}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1668720243423819288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1332122818073267305}
+    m_Modifications:
+    - target: {fileID: 1185618691367201325, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_Name
+      value: GreenScooterModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c7c263e0a5039c4dab97ea0694e656e, type: 3}
+--- !u!1 &530393222204546101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1185618691367201325, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1668720243423819288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &871311836823586447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1963562048322351255, guid: 9c7c263e0a5039c4dab97ea0694e656e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1668720243423819288}
+  m_PrefabAsset: {fileID: 0}
