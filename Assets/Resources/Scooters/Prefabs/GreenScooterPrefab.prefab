@@ -195,9 +195,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ScooterMoveComponent>k__BackingField: {fileID: 4225630324864837609}
-  <RecoverCollisionDuration>k__BackingField: 3
+  <RecoverCollisionDuration>k__BackingField: 2
   <NormalModel>k__BackingField: {fileID: 530393222204546101}
   <HitModel>k__BackingField: {fileID: 2121160990223421075}
+  <ObstacleCollisionGameEvent>k__BackingField: {fileID: 11400000, guid: 7a2e32e0d67e70641946884ce086caab,
+    type: 2}
 --- !u!1 &5434846629006116245
 GameObject:
   m_ObjectHideFlags: 0

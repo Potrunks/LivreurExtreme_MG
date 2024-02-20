@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Business.Interface;
 using Assets.Sources.Components;
+using Assets.Sources.Shared.ScriptableObjects;
 
 namespace Assets.Sources.Business.Implementation
 {
@@ -7,9 +8,9 @@ namespace Assets.Sources.Business.Implementation
     {
         public ScooterDamageBusiness() { }
 
-        public void TakeObstacleDamage(ScooterCollisionSystemComponent scooterCollisionSystem, RemainingTimerUIComponent remainingTimerUI, float wastedTimeInSeconds)
+        public void TakeObstacleDamage(ScooterCollisionSystemComponent scooterCollisionSystem, FloatGameEvent obstacleCollisionGameEvent, float wastedTimeInSeconds)
         {
-            remainingTimerUI.Timer -= wastedTimeInSeconds;
+            obstacleCollisionGameEvent.Raise(wastedTimeInSeconds);
             scooterCollisionSystem.NormalModel.SetActive(false);
             scooterCollisionSystem.HitModel.SetActive(true);
             scooterCollisionSystem.IsInRecoverCollisionMode = true;
