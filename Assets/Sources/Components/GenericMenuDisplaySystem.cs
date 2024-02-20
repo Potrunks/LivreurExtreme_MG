@@ -2,7 +2,7 @@
 
 namespace Assets.Sources.Components
 {
-    public class GameOverMenuDisplaySystem : MonoBehaviour
+    public class GenericMenuDisplaySystem : MonoBehaviour
     {
         [field: SerializeField]
         public GameObject MainCanvas { get; private set; }

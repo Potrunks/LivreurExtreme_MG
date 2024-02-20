@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Sources.Components
 {
-    public class GameOverMenuButtonSystem : MonoBehaviour
+    public class GenericMenuButtonSystem : MonoBehaviour
     {
         public void Quit()
         {
