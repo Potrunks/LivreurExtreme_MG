@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Business.Implementation;
 using Assets.Sources.Business.Interface;
 using Assets.Sources.Resources;
+using Assets.Sources.Shared.ScriptableObjects;
 using System.Collections;
 using UnityEngine;
 
@@ -20,6 +21,9 @@ namespace Assets.Sources.Components
         [field: SerializeField]
         public GameObject HitModel { get; private set; }
 
+        [field: SerializeField]
+        public FloatGameEvent ObstacleCollisionGameEvent { get; private set; }
+
         public bool IsInRecoverCollisionMode { get; set; }
 
         private IScooterDamageBusiness _scooterDamageBusiness = new ScooterDamageBusiness();
@@ -31,15 +35,15 @@ namespace Assets.Sources.Components
                 ObstacleDamageSystemComponent obstacleDamageSystemComponentHit = other.GetComponentInParent<ObstacleDamageSystemComponent>();
                 if (obstacleDamageSystemComponentHit != null)
                 {
-                    StartCoroutine(TakeObstacleDamageCoroutine(RoadUIComponent.Instance.RemainingTimerUI, obstacleDamageSystemComponentHit.WastedTimeInSeconds));
+                    StartCoroutine(TakeObstacleDamageCoroutine(obstacleDamageSystemComponentHit.WastedTimeInSeconds));
                 }
             }
         }
 
-        private IEnumerator TakeObstacleDamageCoroutine(RemainingTimerUIComponent remainingTimerUI, float wastedTimeInSeconds)
+        private IEnumerator TakeObstacleDamageCoroutine(float wastedTimeInSeconds)
         {
-            _scooterDamageBusiness.TakeObstacleDamage(this, remainingTimerUI, wastedTimeInSeconds);
-            yield return new WaitForSeconds(wastedTimeInSeconds);
+            _scooterDamageBusiness.TakeObstacleDamage(this, ObstacleCollisionGameEvent, wastedTimeInSeconds);
+            yield return new WaitForSeconds(RecoverCollisionDuration);
             _scooterDamageBusiness.RecoverAfterObstacleDamage(this);
         }
     }

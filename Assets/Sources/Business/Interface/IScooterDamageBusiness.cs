@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Components;
+using Assets.Sources.Shared.ScriptableObjects;
 
 namespace Assets.Sources.Business.Interface
 {
@@ -7,7 +8,7 @@ namespace Assets.Sources.Business.Interface
         /// <summary>
         /// Execute the logic when scooter hit by obstacle
         /// </summary>
-        void TakeObstacleDamage(ScooterCollisionSystemComponent scooterCollisionSystem, RemainingTimerUIComponent remainingTimerUI, float wastedTimeInSeconds);
+        void TakeObstacleDamage(ScooterCollisionSystemComponent scooterCollisionSystem, FloatGameEvent obstacleCollisionGameEvent, float wastedTimeInSeconds);
 
         /// <summary>
         /// Execute recover logic when scooter have recover timer elapsed.
