@@ -51,8 +51,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ScooterSplineAnimate>k__BackingField: {fileID: -8218479885424870619}
   <SwipeTransitionDuration>k__BackingField: 0.25
-  <ForwardTransitionDistance>k__BackingField: 2.5
   <SwipeTouchscreenThreshold>k__BackingField: 30
+  <OverRunCallTimer>k__BackingField: 1
+  <OverRunPlayerEvent>k__BackingField: {fileID: 11400000, guid: 52f0dd48163825e498add57d5aa2e4d4,
+    type: 2}
+  <OverRunRoadEvent>k__BackingField: {fileID: 11400000, guid: d5428db3377042843983030f53d65c4a,
+    type: 2}
 --- !u!114 &-8218479885424870619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,10 +71,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Target: {fileID: 0}
   m_PlayOnAwake: 1
-  m_LoopMode: 1
+  m_LoopMode: 0
   m_Method: 1
   m_Duration: 1
-  m_MaxSpeed: 10
+  m_MaxSpeed: 20
   m_EasingMode: 0
   m_AlignmentMode: 1
   m_ObjectForwardAxis: 2

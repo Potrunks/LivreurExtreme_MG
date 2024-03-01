@@ -37,6 +37,10 @@ namespace Assets.Sources.Components
                 {
                     StartCoroutine(TakeObstacleDamageCoroutine(obstacleDamageSystemComponentHit.WastedTimeInSeconds));
                 }
+                else
+                {
+                    Debug.LogError($"Impossible de récupérer le {nameof(ObstacleDamageSystemComponent)} lors de la collision avec l'obstacle");
+                }
             }
         }
 
