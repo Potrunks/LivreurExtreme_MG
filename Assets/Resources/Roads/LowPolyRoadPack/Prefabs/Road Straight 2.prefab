@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &404288
 Transform:
@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <zUnitOffsetTriggerForPlayer>k__BackingField: 30
+  <xUnitOffsetTriggerForRoad>k__BackingField: 0
+  <zUnitOffsetTriggerForArrivalCheckpoint>k__BackingField: 0
 --- !u!1 &3492130011373787709
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +137,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6609016676646307184
 Transform:
@@ -168,7 +170,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5022052932711519021
 Transform:

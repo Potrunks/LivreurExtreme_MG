@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &400000
 Transform:
@@ -98,68 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <zUnitOffsetTriggerForPlayer>k__BackingField: 30
---- !u!1 &5078716922332201018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3815911230792373068}
-  - component: {fileID: 2056673150124885238}
-  m_Layer: 0
-  m_Name: OnOverRunPlayerEvent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3815911230792373068
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5078716922332201018}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2026388479248972154}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2056673150124885238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5078716922332201018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ad3c985aad40144a1cb7d5e4aa1aa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <GameEvent>k__BackingField: {fileID: 11400000, guid: 52f0dd48163825e498add57d5aa2e4d4,
-    type: 2}
-  <Response>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 645593319701818020}
-        m_TargetAssemblyTypeName: Assets.Sources.Components.AutoDestructionSystem,
-          Assembly-CSharp
-        m_MethodName: SelfDestructByOverRunPlayer
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  <xUnitOffsetTriggerForRoad>k__BackingField: 0
+  <zUnitOffsetTriggerForArrivalCheckpoint>k__BackingField: 0
 --- !u!1 &5193206690276225803
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +114,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2026388479248972154
 Transform:
@@ -192,3 +132,87 @@ Transform:
   - {fileID: 3815911230792373068}
   m_Father: {fileID: 400000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3832385577701005525
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2026388479248972154}
+    m_Modifications:
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3000975381289622563, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: <Response>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 645593319701818020}
+    - target: {fileID: 8310377443803437295, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_Name
+      value: OnOverRunPlayerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310377443803437295, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae28a3b4d6c7e1f45bc065d530d5dca2, type: 3}
+--- !u!4 &3815911230792373068 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 133851707481213849, guid: ae28a3b4d6c7e1f45bc065d530d5dca2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3832385577701005525}
+  m_PrefabAsset: {fileID: 0}

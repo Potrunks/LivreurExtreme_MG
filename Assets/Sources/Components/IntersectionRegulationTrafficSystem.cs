@@ -27,7 +27,7 @@ namespace Assets.Sources.Components
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == TagResources.OBSTACLE)
+            if (other.tag == TagResources.VEHICLE_OBSTACLE)
             {
                 AutoMoveSystem autoMoveSystemHit = other.GetComponentInParent<AutoMoveSystem>();
                 if (autoMoveSystemHit != null)
@@ -39,7 +39,7 @@ namespace Assets.Sources.Components
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.tag == TagResources.OBSTACLE)
+            if (other.tag == TagResources.VEHICLE_OBSTACLE)
             {
                 AutoMoveSystem autoMoveSystemHit = other.GetComponentInParent<AutoMoveSystem>();
 

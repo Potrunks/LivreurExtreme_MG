@@ -6,9 +6,14 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
 {
     public class StopAutoMoveState : AutoMoveState
     {
-        public override bool CanMove(AutoMoveSystem autoMoveSystem)
+        public override bool CanTurnIntersection(AutoMoveSystem autoMoveSystem)
         {
-            return !autoMoveSystem.VehicleLightSignalSystem.IsTurnLightSignalActive;
+            return false;
+        }
+
+        public override bool CanOvertake(AutoMoveSystem autoMoveSystem)
+        {
+            return true;
         }
 
         public override IAutoMoveState CheckChangeState(AutoMoveSystem autoMoveSystem)
@@ -35,10 +40,13 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
         {
             switch (autoMoveInputAction)
             {
+                case AutoMoveInputAction.RESUME:
                 case AutoMoveInputAction.FORWARD:
                     NextState = new ForwardAutoMoveState();
                     break;
-                case AutoMoveInputAction.STOP:
+                case AutoMoveInputAction.OVERTAKE:
+                    NextState = new OvertakeAutoMoveState();
+                    break;
                 default:
                     break;
             }

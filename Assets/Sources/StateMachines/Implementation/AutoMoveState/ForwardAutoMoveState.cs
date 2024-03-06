@@ -7,7 +7,12 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
 {
     public class ForwardAutoMoveState : AutoMoveState
     {
-        public override bool CanMove(AutoMoveSystem autoMoveSystem)
+        public override bool CanTurnIntersection(AutoMoveSystem autoMoveSystem)
+        {
+            return false;
+        }
+
+        public override bool CanOvertake(AutoMoveSystem autoMoveSystem)
         {
             return true;
         }
@@ -36,10 +41,15 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
         {
             switch (autoMoveInputAction)
             {
+                case AutoMoveInputAction.STOP_INTERSECTION:
+                    NextState = new StopIntersectionAutoMoveState();
+                    break;
                 case AutoMoveInputAction.STOP:
                     NextState = new StopAutoMoveState();
                     break;
-                case AutoMoveInputAction.FORWARD:
+                case AutoMoveInputAction.OVERTAKE:
+                    NextState = new OvertakeAutoMoveState();
+                    break;
                 default:
                     break;
             }

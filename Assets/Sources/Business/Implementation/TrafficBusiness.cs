@@ -11,7 +11,7 @@ namespace Assets.Sources.Business.Implementation
     {
         public IntersectionRegulationResult AssignNextEntry(AutoMoveSystem obstacleToRegulate, IDictionary<int, IntersectionEntry> intersectionEntriesById)
         {
-            obstacleToRegulate.Stop().Start();
+            obstacleToRegulate.StopIntersectionTask().Start();
 
             IntersectionEntry closestIntersectionEntry = ClosestIntersectionEntry(obstacleToRegulate.transform.position, intersectionEntriesById.Values.ToList());
 
@@ -25,7 +25,10 @@ namespace Assets.Sources.Business.Implementation
                 NextIntersectionEntry = intersectionEntriesById[nextIntersectionExit.IntersectionEntryId]
             };
 
-            obstacleToRegulate.VehicleLightSignalSystem.ActiveTurnSignals(intersectionRegulationResult.IntersectionDirection);
+            if (obstacleToRegulate.VehicleLightSignalSystem != null)
+            {
+                obstacleToRegulate.VehicleLightSignalSystem.ActiveTurnSignals(intersectionRegulationResult.IntersectionDirection);
+            }
 
             return intersectionRegulationResult;
         }
@@ -54,7 +57,7 @@ namespace Assets.Sources.Business.Implementation
             {
                 IntersectionRegulationResult intersectionRegulationResultToProcess = queue.First();
 
-                if (!intersectionRegulationResultToProcess.IsProcessing && intersectionRegulationResultToProcess.AutoMoveSystem.CanMove())
+                if (!intersectionRegulationResultToProcess.IsProcessing && intersectionRegulationResultToProcess.AutoMoveSystem.CanTurnIntersection())
                 {
                     intersectionRegulationResultToProcess.IsProcessing = true;
                     intersectionRegulationResultToProcess.AutoMoveSystem.TurnToIntersection(intersectionRegulationResultToProcess);

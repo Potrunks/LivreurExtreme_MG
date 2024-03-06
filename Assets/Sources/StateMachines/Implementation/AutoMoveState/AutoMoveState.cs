@@ -7,8 +7,8 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
     public abstract class AutoMoveState : IAutoMoveState
     {
         public IAutoMoveState NextState { get; set; }
-
-        public abstract bool CanMove(AutoMoveSystem autoMoveSystem);
+        public abstract bool CanTurnIntersection(AutoMoveSystem autoMoveSystem);
+        public abstract bool CanOvertake(AutoMoveSystem autoMoveSystem);
         public abstract IAutoMoveState CheckChangeState(AutoMoveSystem autoMoveSystem);
         public abstract void OnEnter(AutoMoveSystem autoMoveSystem);
         public abstract void OnExit(AutoMoveSystem autoMoveSystem);

@@ -13,6 +13,9 @@ namespace Assets.Sources.Components
         [field: SerializeField]
         public float zUnitOffsetTriggerForArrivalCheckpoint { get; private set; }
 
+        [field: SerializeField]
+        public float AutoDestructionDelay { get; private set; } = 5;
+
         public void SelfDestructByOverRunPlayer(float zPositionPlayer)
         {
             if (zPositionPlayer > transform.position.z + zUnitOffsetTriggerForPlayer)
@@ -35,6 +38,11 @@ namespace Assets.Sources.Components
             {
                 Destroy(gameObject);
             }
+        }
+
+        public void Destroy()
+        {
+            Destroy(gameObject, AutoDestructionDelay);
         }
     }
 }

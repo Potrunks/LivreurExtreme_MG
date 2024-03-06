@@ -10,6 +10,7 @@ namespace Assets.Sources.StateMachines.Interface
         void OnEnter(AutoMoveSystem autoMoveSystem);
         void OnExit(AutoMoveSystem autoMoveSystem);
         void OnInput(AutoMoveInputAction autoMoveInputAction);
-        bool CanMove(AutoMoveSystem autoMoveSystem);
+        bool CanTurnIntersection(AutoMoveSystem autoMoveSystem);
+        bool CanOvertake(AutoMoveSystem autoMoveSystem);
     }
 }

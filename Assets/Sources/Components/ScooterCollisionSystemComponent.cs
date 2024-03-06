@@ -30,7 +30,7 @@ namespace Assets.Sources.Components
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!IsInRecoverCollisionMode && other.tag == TagResources.OBSTACLE)
+            if (!IsInRecoverCollisionMode && TagResources.OBSTACLES.Contains(other.tag))
             {
                 ObstacleDamageSystemComponent obstacleDamageSystemComponentHit = other.GetComponentInParent<ObstacleDamageSystemComponent>();
                 if (obstacleDamageSystemComponentHit != null)
