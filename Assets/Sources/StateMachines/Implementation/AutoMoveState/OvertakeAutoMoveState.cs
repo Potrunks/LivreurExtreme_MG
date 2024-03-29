@@ -24,8 +24,14 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
                 return NextState;
             }
 
-            if ((autoMoveSystem.transform.right.x == -1 && autoMoveSystem.transform.position.x >= RoadSplinesComponent.Instance.MiddleSpline.transform.position.x)
-                || (autoMoveSystem.transform.right.x == 1 && autoMoveSystem.transform.position.x <= RoadSplinesComponent.Instance.MiddleSpline.transform.position.x))
+            //if ((autoMoveSystem.transform.right.x == -1 && autoMoveSystem.transform.position.x >= RoadSplinesComponent.Instance.MiddleSpline.transform.position.x)
+            //    || (autoMoveSystem.transform.right.x == 1 && autoMoveSystem.transform.position.x <= RoadSplinesComponent.Instance.MiddleSpline.transform.position.x))
+            //{
+            //    return new ForwardOvertakeAutoMoveState();
+            //}
+
+            if ((autoMoveSystem.transform.localPosition.x <= LocalPositionBeforeOvertake.x - RoadSplinesComponent.Instance.DistanceBetweenLanes)
+                || (LocalPositionBeforeOvertake.x + RoadSplinesComponent.Instance.DistanceBetweenLanes <= autoMoveSystem.transform.localPosition.x))
             {
                 return new ForwardOvertakeAutoMoveState();
             }
@@ -35,7 +41,7 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
 
         public override void OnEnter(AutoMoveSystem autoMoveSystem)
         {
-
+            LocalPositionBeforeOvertake = autoMoveSystem.transform.localPosition;
         }
 
         public override void OnExit(AutoMoveSystem autoMoveSystem)
@@ -51,6 +57,11 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
         public override void OnUpdate(AutoMoveSystem autoMoveSystem)
         {
             autoMoveSystem.transform.Translate(new Vector3(-1, 0, 1) * Time.deltaTime * autoMoveSystem.Speed, Space.Self);
+        }
+
+        public override bool IsStopped()
+        {
+            return false;
         }
     }
 }

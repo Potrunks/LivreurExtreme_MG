@@ -39,6 +39,8 @@ namespace Assets.Sources.Components
 
         private IDictionary<SideEnvironment, Transform> _checkEnvironmentBySideEnvironment = new Dictionary<SideEnvironment, Transform>();
 
+        private bool _isStarted = false;
+
         private void Awake()
         {
             CheckRaycastsValidity();
@@ -47,6 +49,7 @@ namespace Assets.Sources.Components
         private void Start()
         {
             InitializeEnvironmentCheck();
+            _isStarted = true;
         }
 
         private void FixedUpdate()
@@ -87,7 +90,7 @@ namespace Assets.Sources.Components
 
         private void InitializeEnvironmentCheck()
         {
-            if (!RendererCollider.IsUnityNull() && !FrontRaycast.IsUnityNull())
+            if (!RendererCollider.IsUnityNull())
             {
                 if (!LeftEnvironmentCheck.IsUnityNull())
                 {
@@ -96,7 +99,7 @@ namespace Assets.Sources.Components
                         0,
                         0
                     );
-                    LeftEnvironmentCheck.position = FrontRaycast.position + offsetCenter;
+                    LeftEnvironmentCheck.position = RendererCollider.position + offsetCenter;
                     _checkEnvironmentBySideEnvironment.Add(SideEnvironment.LEFT, LeftEnvironmentCheck);
                 }
 
@@ -107,7 +110,7 @@ namespace Assets.Sources.Components
                         0,
                         0
                     );
-                    RightEnvironmentCheck.position = FrontRaycast.position + offsetCenter;
+                    RightEnvironmentCheck.position = RendererCollider.position + offsetCenter;
                     _checkEnvironmentBySideEnvironment.Add(SideEnvironment.RIGHT, RightEnvironmentCheck);
                 }
             }
@@ -120,34 +123,20 @@ namespace Assets.Sources.Components
             if (!FrontRaycast.IsUnityNull())
             {
                 Gizmos.DrawRay(FrontRaycast.position, FrontRaycast.transform.TransformDirection(Vector3.forward) * FrontRaycastDistance);
+            }
 
-                if (!RendererCollider.IsUnityNull())
+            if (!RendererCollider.IsUnityNull() && _isStarted)
+            {
+                if (!LeftEnvironmentCheck.IsUnityNull())
                 {
-                    Vector3 scale = new Vector3(
-                            RendererCollider.localScale.x,
-                            RendererCollider.localScale.y,
-                            FrontRaycastDistance * 2
-                        );
+                    Gizmos.matrix = transform.localToWorldMatrix;
+                    Gizmos.DrawWireCube(LeftEnvironmentCheck.position, RendererCollider.localScale);
+                }
 
-                    if (!LeftEnvironmentCheck.IsUnityNull())
-                    {
-                        Vector3 offsetCenter = new Vector3(
-                                RendererCollider.transform.right.x * -1.5f,
-                                0,
-                                0
-                            );
-                        Gizmos.DrawWireCube(FrontRaycast.position + offsetCenter, scale);
-                    }
-
-                    if (!RightEnvironmentCheck.IsUnityNull())
-                    {
-                        Vector3 offsetCenter = new Vector3(
-                                RendererCollider.transform.right.x * 1.5f,
-                                0,
-                                0
-                            );
-                        Gizmos.DrawWireCube(FrontRaycast.position + offsetCenter, scale);
-                    }
+                if (!RightEnvironmentCheck.IsUnityNull())
+                {
+                    Gizmos.matrix = transform.localToWorldMatrix;
+                    Gizmos.DrawWireCube(RightEnvironmentCheck.position, RendererCollider.localScale);
                 }
             }
         }

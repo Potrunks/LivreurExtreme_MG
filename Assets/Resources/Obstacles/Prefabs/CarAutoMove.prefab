@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 229978177512511656}
   - component: {fileID: 3990021043927027480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RendererCollider
   m_TagString: VehicleObstacle
   m_Icon: {fileID: 0}
@@ -461,6 +461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a33aa9ebf822d44b605a0c73be1d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Vehicle>k__BackingField: {fileID: 11400000, guid: 130dc440c4ce7f842b5d14cc753cd87e,
+    type: 2}
   <Direction>k__BackingField: {x: 0, y: 0, z: 1}
   <Speed>k__BackingField: 10
   <VehicleLightSignalSystem>k__BackingField: {fileID: 8230117106033838603}
@@ -480,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <zUnitOffsetTriggerForPlayer>k__BackingField: 30
-  <xUnitOffsetTriggerForRoad>k__BackingField: 30
+  <xUnitOffsetTriggerForRoad>k__BackingField: 40
   <zUnitOffsetTriggerForArrivalCheckpoint>k__BackingField: 30
   <AutoDestructionDelay>k__BackingField: 5
 --- !u!114 &8685117211505795076

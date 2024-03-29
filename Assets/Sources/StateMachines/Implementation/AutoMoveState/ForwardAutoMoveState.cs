@@ -50,6 +50,9 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
                 case AutoMoveInputAction.OVERTAKE:
                     NextState = new OvertakeAutoMoveState();
                     break;
+                case AutoMoveInputAction.BUS_STOP:
+                    NextState = new BusStopAutoMoveState();
+                    break;
                 default:
                     break;
             }
@@ -58,6 +61,11 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
         public override void OnUpdate(AutoMoveSystem autoMoveSystem)
         {
             autoMoveSystem.transform.Translate(autoMoveSystem.Direction * Time.deltaTime * autoMoveSystem.Speed, Space.Self);
+        }
+
+        public override bool IsStopped()
+        {
+            return false;
         }
     }
 }

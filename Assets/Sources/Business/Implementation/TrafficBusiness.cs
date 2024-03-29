@@ -22,7 +22,8 @@ namespace Assets.Sources.Business.Implementation
             {
                 AutoMoveSystem = obstacleToRegulate,
                 IntersectionDirection = nextIntersectionExit.Direction,
-                NextIntersectionEntry = intersectionEntriesById[nextIntersectionExit.IntersectionEntryId]
+                NextIntersectionEntry = intersectionEntriesById[nextIntersectionExit.IntersectionEntryId],
+                IntersectionCrossEntryTransform = nextIntersectionExit.IntersectionCrossEntryTransform
             };
 
             if (obstacleToRegulate.VehicleLightSignalSystem != null)

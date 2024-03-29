@@ -12,5 +12,6 @@ namespace Assets.Sources.StateMachines.Interface
         void OnInput(AutoMoveInputAction autoMoveInputAction);
         bool CanTurnIntersection(AutoMoveSystem autoMoveSystem);
         bool CanOvertake(AutoMoveSystem autoMoveSystem);
+        bool IsStopped();
     }
 }

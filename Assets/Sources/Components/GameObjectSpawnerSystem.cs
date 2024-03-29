@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Sources.Shared.Entities;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,8 +9,8 @@ namespace Assets.Sources.Components
     public class GameObjectSpawnerSystem : MonoBehaviour
     {
         [field: SerializeField]
-        [field: Tooltip("List of Game Object to pop")]
-        public List<GameObject> GameObjectsToSpawn { get; private set; }
+        [field: Tooltip("List of Spawnable Game Object to pop")]
+        public List<SpawnableGameObject> GameObjectsToSpawn { get; private set; }
 
         [field: SerializeField]
         [field: Tooltip("Container where Game Object is pop")]
@@ -37,8 +38,13 @@ namespace Assets.Sources.Components
         {
             while (GameObjectsToSpawn.Any())
             {
-                GameObject gameObjectToSpawn = GameObjectsToSpawn[Random.Range(0, GameObjectsToSpawn.Count)];
-                Instantiate(gameObjectToSpawn, transform.position, transform.rotation, Container.transform);
+                float randomPercentage = Random.Range(0f, 100f);
+                List<SpawnableGameObject> preSelectedGameObjectsToSpawn = GameObjectsToSpawn.Where(go => go.SpawnPercentage > randomPercentage).ToList();
+
+                SpawnableGameObject gameObjectToSpawn = preSelectedGameObjectsToSpawn[Random.Range(0, preSelectedGameObjectsToSpawn.Count)];
+
+                Instantiate(gameObjectToSpawn.GameObject, transform.position, transform.rotation, Container.transform);
+
                 yield return new WaitForSeconds(Random.Range(MinPopInterval, MaxPopInterval));
             }
         }

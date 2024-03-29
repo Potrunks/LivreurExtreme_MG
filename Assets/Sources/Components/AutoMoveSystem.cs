@@ -15,6 +15,9 @@ namespace Assets.Sources.Components
     public class AutoMoveSystem : MonoBehaviour
     {
         [field: SerializeField]
+        public Vehicle Vehicle { get; private set; }
+
+        [field: SerializeField]
         public Vector3 Direction { get; private set; }
 
         [field: SerializeField]
@@ -34,6 +37,12 @@ namespace Assets.Sources.Components
 
         private void Update()
         {
+            ChangeState();
+            _currentAutoMoveState.OnUpdate(this);
+        }
+
+        private void ChangeState()
+        {
             _nextAutoMoveState = _currentAutoMoveState.CheckChangeState(this);
             if (_nextAutoMoveState != null)
             {
@@ -41,7 +50,6 @@ namespace Assets.Sources.Components
                 _currentAutoMoveState = _nextAutoMoveState;
                 _currentAutoMoveState.OnEnter(this);
             }
-            _currentAutoMoveState.OnUpdate(this);
         }
 
         public void TurnToIntersection(IntersectionRegulationResult intersectionRegulationResult)
@@ -63,6 +71,17 @@ namespace Assets.Sources.Components
             {
                 StopTask().Start();
             }
+        }
+
+        /// <summary>
+        /// Stop the game object attached to this auto move system. Enter the auto move system into BusStopAutoMoveState.
+        /// </summary>
+        /// <returns>Return true if game object attached to this auto move system is stopped</returns>
+        public bool BusStop()
+        {
+            _currentAutoMoveState.OnInput(AutoMoveInputAction.BUS_STOP);
+            ChangeState();
+            return _currentAutoMoveState.IsStopped();
         }
 
         private Task StopTask()
@@ -117,6 +136,17 @@ namespace Assets.Sources.Components
             });
         }
 
+        /// <summary>
+        /// Forward the game object movement attached to this auto move system depending to this current state.
+        /// </summary>
+        public void Forward()
+        {
+            ForwardTask().Start();
+        }
+
+        /// <summary>
+        /// Resume the game object movement attached to this auto move system depending to this current state.
+        /// </summary>
         public void Resume()
         {
             ResumeTask().Start();

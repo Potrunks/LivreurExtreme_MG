@@ -190,6 +190,68 @@ Transform:
   - {fileID: 6785878841096324417}
   m_Father: {fileID: 1131135587327496775}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2058722799559862393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4204990893164731348}
+  - component: {fileID: 4225284274082680356}
+  m_Layer: 0
+  m_Name: OnOverRunRoadEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4204990893164731348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058722799559862393}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7900520695473680994}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4225284274082680356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058722799559862393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ad3c985aad40144a1cb7d5e4aa1aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <GameEvent>k__BackingField: {fileID: 11400000, guid: d5428db3377042843983030f53d65c4a,
+    type: 2}
+  <Response>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2020112172686091215}
+        m_TargetAssemblyTypeName: Assets.Sources.Components.AutoDestructionSystem,
+          Assembly-CSharp
+        m_MethodName: SelfDestructByOverRunRoad
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2204933817513313704
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6785878841096324417}
   - component: {fileID: 6640864454262081519}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RendererCollider
   m_TagString: VehicleObstacle
   m_Icon: {fileID: 0}
@@ -336,6 +398,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5799289925760440847}
+  - {fileID: 4204990893164731348}
   m_Father: {fileID: 1131135587327496775}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7946360309840958943
@@ -390,6 +453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a33aa9ebf822d44b605a0c73be1d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Vehicle>k__BackingField: {fileID: 11400000, guid: 56d7c01f9b3a5314cabdfb70a5ea3f86,
+    type: 2}
   <Direction>k__BackingField: {x: 0, y: 0, z: 1}
   <Speed>k__BackingField: 20
   <VehicleLightSignalSystem>k__BackingField: {fileID: 0}
@@ -422,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <zUnitOffsetTriggerForPlayer>k__BackingField: 30
-  <xUnitOffsetTriggerForRoad>k__BackingField: 30
+  <xUnitOffsetTriggerForRoad>k__BackingField: 40
   <zUnitOffsetTriggerForArrivalCheckpoint>k__BackingField: 30
   <AutoDestructionDelay>k__BackingField: 5
 --- !u!114 &8685117211505795076

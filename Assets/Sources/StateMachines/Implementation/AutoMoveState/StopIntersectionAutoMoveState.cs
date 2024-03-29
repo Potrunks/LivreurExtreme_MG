@@ -52,5 +52,10 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
         {
 
         }
+
+        public override bool IsStopped()
+        {
+            return true;
+        }
     }
 }

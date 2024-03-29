@@ -39,6 +39,9 @@ namespace Assets.Sources.Components
             }
         }
 
+        /// <summary>
+        /// Active turn signals attached to this game object
+        /// </summary>
         public void ActiveTurnSignals(IntersectionDirection intersectionDirection)
         {
             if (intersectionDirection != IntersectionDirection.FORWARD)

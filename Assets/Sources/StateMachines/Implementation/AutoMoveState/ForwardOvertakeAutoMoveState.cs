@@ -56,5 +56,10 @@ namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
         {
             autoMoveSystem.transform.Translate(autoMoveSystem.Direction * Time.deltaTime * autoMoveSystem.Speed, Space.Self);
         }
+
+        public override bool IsStopped()
+        {
+            return false;
+        }
     }
 }

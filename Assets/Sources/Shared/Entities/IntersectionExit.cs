@@ -11,6 +11,9 @@ namespace Assets.Sources.Shared.Entities
         public int IntersectionEntryId { get; set; }
 
         [field: SerializeField]
+        public Transform IntersectionCrossEntryTransform { get; set; }
+
+        [field: SerializeField]
         public IntersectionDirection Direction { get; set; }
     }
 }

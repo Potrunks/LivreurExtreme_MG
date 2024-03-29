@@ -6,6 +6,7 @@
         FORWARD = 1,
         STOP = 2,
         OVERTAKE = 3,
-        RESUME = 4
+        RESUME = 4,
+        BUS_STOP = 5
     }
 }
