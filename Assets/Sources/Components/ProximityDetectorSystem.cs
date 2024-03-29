@@ -39,8 +39,6 @@ namespace Assets.Sources.Components
 
         private IDictionary<SideEnvironment, Transform> _checkEnvironmentBySideEnvironment = new Dictionary<SideEnvironment, Transform>();
 
-        private bool _isStarted = false;
-
         private void Awake()
         {
             CheckRaycastsValidity();
@@ -49,7 +47,6 @@ namespace Assets.Sources.Components
         private void Start()
         {
             InitializeEnvironmentCheck();
-            _isStarted = true;
         }
 
         private void FixedUpdate()
@@ -84,7 +81,13 @@ namespace Assets.Sources.Components
         {
             if (!RendererCollider.IsUnityNull() && _checkEnvironmentBySideEnvironment.TryGetValue(holder.SideEnvironment, out Transform checkEnvironment))
             {
-                holder.HitColliders = Physics.OverlapBox(checkEnvironment.position, RendererCollider.localScale / 2);
+                Vector3 environnementCheckSize = new Vector3
+                (
+                    RendererCollider.localScale.x,
+                    RendererCollider.localScale.y,
+                    RendererCollider.localScale.z * 3
+                );
+                holder.HitColliders = Physics.OverlapBox(checkEnvironment.position, environnementCheckSize / 2);
             }
         }
 
@@ -94,23 +97,13 @@ namespace Assets.Sources.Components
             {
                 if (!LeftEnvironmentCheck.IsUnityNull())
                 {
-                    Vector3 offsetCenter = new Vector3(
-                        RendererCollider.transform.right.x * -Mathf.Abs(RoadSplinesComponent.Instance.RightSpline.transform.position.x - RoadSplinesComponent.Instance.MiddleSpline.transform.position.x),
-                        0,
-                        0
-                    );
-                    LeftEnvironmentCheck.position = RendererCollider.position + offsetCenter;
+                    LeftEnvironmentCheck.localPosition = LeftEnvironmentCheck.localPosition + (Vector3.left * RoadSplinesComponent.Instance.DistanceBetweenLanes);
                     _checkEnvironmentBySideEnvironment.Add(SideEnvironment.LEFT, LeftEnvironmentCheck);
                 }
 
                 if (!RightEnvironmentCheck.IsUnityNull())
                 {
-                    Vector3 offsetCenter = new Vector3(
-                        RendererCollider.transform.right.x * Mathf.Abs(RoadSplinesComponent.Instance.RightSpline.transform.position.x - RoadSplinesComponent.Instance.MiddleSpline.transform.position.x),
-                        0,
-                        0
-                    );
-                    RightEnvironmentCheck.position = RendererCollider.position + offsetCenter;
+                    RightEnvironmentCheck.localPosition = RightEnvironmentCheck.localPosition + (Vector3.right * RoadSplinesComponent.Instance.DistanceBetweenLanes);
                     _checkEnvironmentBySideEnvironment.Add(SideEnvironment.RIGHT, RightEnvironmentCheck);
                 }
             }
@@ -123,21 +116,6 @@ namespace Assets.Sources.Components
             if (!FrontRaycast.IsUnityNull())
             {
                 Gizmos.DrawRay(FrontRaycast.position, FrontRaycast.transform.TransformDirection(Vector3.forward) * FrontRaycastDistance);
-            }
-
-            if (!RendererCollider.IsUnityNull() && _isStarted)
-            {
-                if (!LeftEnvironmentCheck.IsUnityNull())
-                {
-                    Gizmos.matrix = transform.localToWorldMatrix;
-                    Gizmos.DrawWireCube(LeftEnvironmentCheck.position, RendererCollider.localScale);
-                }
-
-                if (!RightEnvironmentCheck.IsUnityNull())
-                {
-                    Gizmos.matrix = transform.localToWorldMatrix;
-                    Gizmos.DrawWireCube(RightEnvironmentCheck.position, RendererCollider.localScale);
-                }
             }
         }
     }

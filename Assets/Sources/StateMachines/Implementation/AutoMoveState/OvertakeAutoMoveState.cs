@@ -1,67 +1,59 @@
-﻿using Assets.Sources.Components;
+using Assets.Sources.Components;
 using Assets.Sources.Resources;
+using Assets.Sources.StateMachines.Implementation.AutoMoveState;
 using Assets.Sources.StateMachines.Interface;
 using UnityEngine;
 
-namespace Assets.Sources.StateMachines.Implementation.AutoMoveState
+public class OvertakeAutoMoveState : AutoMoveState
 {
-    public class OvertakeAutoMoveState : AutoMoveState
+    public override bool CanTurnIntersection(AutoMoveSystem autoMoveSystem)
     {
-        public override bool CanTurnIntersection(AutoMoveSystem autoMoveSystem)
+        return false;
+    }
+
+    public override bool CanOvertake(AutoMoveSystem autoMoveSystem)
+    {
+        return false;
+    }
+
+    public override IAutoMoveState CheckChangeState(AutoMoveSystem autoMoveSystem)
+    {
+        if (NextState != null)
         {
-            return false;
+            return NextState;
         }
 
-        public override bool CanOvertake(AutoMoveSystem autoMoveSystem)
+        if ((autoMoveSystem.transform.localPosition.x <= LocalPositionBeforeOvertake.x - RoadSplinesComponent.Instance.DistanceBetweenLanes)
+            || (LocalPositionBeforeOvertake.x + RoadSplinesComponent.Instance.DistanceBetweenLanes <= autoMoveSystem.transform.localPosition.x))
         {
-            return false;
+            return new ForwardOvertakeAutoMoveState();
         }
 
-        public override IAutoMoveState CheckChangeState(AutoMoveSystem autoMoveSystem)
-        {
-            if (NextState != null)
-            {
-                return NextState;
-            }
+        return null;
+    }
 
-            //if ((autoMoveSystem.transform.right.x == -1 && autoMoveSystem.transform.position.x >= RoadSplinesComponent.Instance.MiddleSpline.transform.position.x)
-            //    || (autoMoveSystem.transform.right.x == 1 && autoMoveSystem.transform.position.x <= RoadSplinesComponent.Instance.MiddleSpline.transform.position.x))
-            //{
-            //    return new ForwardOvertakeAutoMoveState();
-            //}
+    public override void OnEnter(AutoMoveSystem autoMoveSystem)
+    {
+        LocalPositionBeforeOvertake = autoMoveSystem.transform.localPosition;
+    }
 
-            if ((autoMoveSystem.transform.localPosition.x <= LocalPositionBeforeOvertake.x - RoadSplinesComponent.Instance.DistanceBetweenLanes)
-                || (LocalPositionBeforeOvertake.x + RoadSplinesComponent.Instance.DistanceBetweenLanes <= autoMoveSystem.transform.localPosition.x))
-            {
-                return new ForwardOvertakeAutoMoveState();
-            }
+    public override void OnExit(AutoMoveSystem autoMoveSystem)
+    {
 
-            return null;
-        }
+    }
 
-        public override void OnEnter(AutoMoveSystem autoMoveSystem)
-        {
-            LocalPositionBeforeOvertake = autoMoveSystem.transform.localPosition;
-        }
+    public override void OnInput(AutoMoveInputAction autoMoveInputAction)
+    {
 
-        public override void OnExit(AutoMoveSystem autoMoveSystem)
-        {
+    }
 
-        }
+    public override void OnUpdate(AutoMoveSystem autoMoveSystem)
+    {
+        autoMoveSystem.transform.Translate(new Vector3(-1, 0, 1) * Time.deltaTime * autoMoveSystem.Speed, Space.Self);
+    }
 
-        public override void OnInput(AutoMoveInputAction autoMoveInputAction)
-        {
-
-        }
-
-        public override void OnUpdate(AutoMoveSystem autoMoveSystem)
-        {
-            autoMoveSystem.transform.Translate(new Vector3(-1, 0, 1) * Time.deltaTime * autoMoveSystem.Speed, Space.Self);
-        }
-
-        public override bool IsStopped()
-        {
-            return false;
-        }
+    public override bool IsStopped()
+    {
+        return false;
     }
 }
