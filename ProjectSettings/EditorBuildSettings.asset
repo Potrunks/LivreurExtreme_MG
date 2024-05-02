@@ -4,10 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Paris.unity
+    guid: 64dfdb7de3b686c448f9040021133b58
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: ce1f2a02eabb5af46b844c3c1371da25,
       type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: fb6dc36c0764b95418024178e43e3b22, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 5e943dc8652c45642bacfcba63154e40, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 573c4b43582c5ac4a82bca98329b9c11,

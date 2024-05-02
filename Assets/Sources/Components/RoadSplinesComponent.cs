@@ -15,6 +15,9 @@ public class RoadSplinesComponent : MonoBehaviour
     [field: SerializeField]
     public SplineContainer StartSpline { get; set; }
 
+    [field: SerializeField]
+    public float DistanceBetweenLanes { get; private set; }
+
     public static RoadSplinesComponent Instance { get; set; }
 
     private void Awake()

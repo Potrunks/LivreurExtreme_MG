@@ -58,11 +58,13 @@ namespace Assets.Sources.Business.Implementation
                 newSplineContainer = roadSplines.RightSpline;
             }
 
+            float estimateZDistanceTransition = scooterMoveComponent.SwipeTransitionDuration * scooterMoveComponent.ScooterSplineAnimate.MaxSpeed;
+
             target = new Vector3
             (
                 newSplineContainer.transform.position.x,
                 newSplineContainer.transform.position.y,
-                scooterMoveComponent.transform.position.z + scooterMoveComponent.ForwardTransitionDistance
+                scooterMoveComponent.transform.position.z + estimateZDistanceTransition
             );
             scooterMoveComponent.ScooterSplineAnimate.Container = null;
 

@@ -1,8 +1,10 @@
 using Assets.Sources.Business.Implementation;
 using Assets.Sources.Business.Interface;
 using Assets.Sources.Resources;
+using Assets.Sources.Shared.ScriptableObjects;
 using Assets.Sources.StateMachines.Implementation.ScooterMoveState;
 using Assets.Sources.StateMachines.Interface;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
@@ -16,16 +18,27 @@ public class ScooterMoveComponent : MonoBehaviour
     public float SwipeTransitionDuration { get; set; }
 
     [field: SerializeField]
-    public float ForwardTransitionDistance { get; set; }
+    public float SwipeTouchscreenThreshold { get; set; }
 
     [field: SerializeField]
-    public float SwipeTouchscreenThreshold { get; set; }
+    public float OverRunCallTimer { get; private set; }
+
+    [field: SerializeField]
+    public FloatGameEvent OverRunPlayerEvent { get; private set; }
+
+    [field: SerializeField]
+    public FloatGameEvent OverRunRoadEvent { get; private set; }
 
     public ITransformBusiness TransformBusiness { get; set; } = new TransformBusiness();
 
     public IScooterMoveState CurrentScooterMoveState { get; set; } = new ForwardScooterMoveState();
 
     private IScooterMoveState NextScooterMoveState { get; set; }
+
+    private void Awake()
+    {
+        StartCoroutine(OverRunCoroutine());
+    }
 
     public void Start()
     {
@@ -75,6 +88,16 @@ public class ScooterMoveComponent : MonoBehaviour
             {
                 CurrentScooterMoveState.OnInput(ScooterMoveInputAction.RIGHT);
             }
+        }
+    }
+
+    private IEnumerator OverRunCoroutine()
+    {
+        while (OverRunPlayerEvent != null)
+        {
+            OverRunPlayerEvent.Raise(transform.position.z);
+            OverRunRoadEvent.Raise(transform.position.x);
+            yield return new WaitForSeconds(OverRunCallTimer);
         }
     }
 }

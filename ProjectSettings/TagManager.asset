@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Obstacle
+  - VehicleObstacle
+  - FixedObstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - OnRoad
   - Water
   - UI
   - 
