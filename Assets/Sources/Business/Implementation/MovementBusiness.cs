@@ -5,6 +5,7 @@ using Assets.Sources.Shared.Entities;
 using DG.Tweening;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Sources.Business.Implementation
@@ -28,12 +29,15 @@ namespace Assets.Sources.Business.Implementation
                     autoMoveSystem.transform.eulerAngles.z
                 );
 
-            List<Task> tasks = new List<Task>
+            if (autoMoveSystem.transform != null && !autoMoveSystem.transform.IsUnityNull())
             {
-                autoMoveSystem.transform.DOMove(intersectionRegulationResult.IntersectionCrossEntryTransform.position, durationMovement).AsyncWaitForCompletion(),
-                autoMoveSystem.transform.DORotate(turnSens, durationMovement).AsyncWaitForCompletion()
-            };
-            await Task.WhenAll(tasks);
+                List<Task> tasks = new List<Task>
+                {
+                    autoMoveSystem.transform.DOMove(intersectionRegulationResult.IntersectionCrossEntryTransform.position, durationMovement).AsyncWaitForCompletion(),
+                    autoMoveSystem.transform.DORotate(turnSens, durationMovement).AsyncWaitForCompletion()
+                };
+                await Task.WhenAll(tasks);
+            }
 
             autoMoveSystem.ForwardTask().Start();
         }
