@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Sources.Components
@@ -13,7 +14,10 @@ namespace Assets.Sources.Components
 
         public void MoveObstacle()
         {
-            transform.DOMove(TargetPosition, MoveDuration);
+            if (transform != null && !transform.IsUnityNull())
+            {
+                transform.DOMove(TargetPosition, MoveDuration);
+            }
         }
     }
 }

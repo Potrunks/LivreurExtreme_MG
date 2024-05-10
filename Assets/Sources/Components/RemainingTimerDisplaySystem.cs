@@ -1,4 +1,7 @@
-﻿using Assets.Sources.Shared.ScriptableObjects;
+﻿using Assets.Sources.Business.Implementation;
+using Assets.Sources.Business.Interface;
+using Assets.Sources.Shared.ScriptableObjects;
+using Assets.Sources.Shared.Utils;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -25,7 +28,12 @@ namespace Assets.Sources.Components
         [field: SerializeField]
         public GameEvent GameOverEvent { get; private set; }
 
+        [field: SerializeField]
+        public GameEvent HighScoreSavedEvent { get; private set; }
+
         private float _remainingTimer;
+
+        private IHighScoreBusiness _highScoreBusiness = new HighScoreBusiness();
 
         private void Awake()
         {
@@ -36,9 +44,7 @@ namespace Assets.Sources.Components
         private void UpdateTimer()
         {
             _remainingTimer -= Time.deltaTime;
-            int minutes = Mathf.Max(Mathf.FloorToInt(_remainingTimer / 60), 0);
-            int seconds = Mathf.Max(Mathf.FloorToInt(_remainingTimer % 60), 0);
-            RemainingTimerDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            RemainingTimerDisplay.text = _remainingTimer.TimeToChronometer();
         }
 
         public void ReduceTimer(float secondsToReduce)
@@ -75,6 +81,14 @@ namespace Assets.Sources.Components
             }
 
             GameOverEvent.Raise();
+        }
+
+        public void SaveNewHighScore()
+        {
+            if (_highScoreBusiness.SaveNewHighScore(StartTimer - _remainingTimer).IsSuccess && HighScoreSavedEvent != null)
+            {
+                HighScoreSavedEvent.Raise();
+            }
         }
     }
 }

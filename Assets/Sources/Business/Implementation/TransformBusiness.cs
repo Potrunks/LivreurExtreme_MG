@@ -2,6 +2,7 @@
 using Assets.Sources.Shared.Dtos;
 using Assets.Sources.StateMachines.Implementation.ScooterMoveState;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -68,12 +69,15 @@ namespace Assets.Sources.Business.Implementation
             );
             scooterMoveComponent.ScooterSplineAnimate.Container = null;
 
-            scooterMoveComponent.transform.DOMove(target, scooterMoveComponent.SwipeTransitionDuration)
+            if (scooterMoveComponent.transform != null && !scooterMoveComponent.transform.IsUnityNull())
+            {
+                scooterMoveComponent.transform.DOMove(target, scooterMoveComponent.SwipeTransitionDuration)
                             .OnComplete(() =>
                             {
                                 scooterMoveComponent.ScooterSplineAnimate.Container = newSplineContainer;
                                 scooterMoveComponent.CurrentScooterMoveState.SetNextState(new ForwardScooterMoveState());
                             });
+            }
         }
     }
 }
