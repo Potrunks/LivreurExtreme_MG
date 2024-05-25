@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
-    m_FontSize: 75
+    m_FontSize: 72
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Livreur de l'extreme
+  m_Text: Extreme Delivery Men
 --- !u!222 &102574593
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -815,7 +815,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 40aafca46a85b184d8ea752c0bfb69bc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7169549b64ef3d545a4858a97fb2a2ac, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AudioSource>k__BackingField: {fileID: 1503100037}
-  <StartTime>k__BackingField: 38
+  <StartTime>k__BackingField: 0
 --- !u!114 &1503100039
 MonoBehaviour:
   m_ObjectHideFlags: 0
