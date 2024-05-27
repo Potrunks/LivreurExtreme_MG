@@ -26,6 +26,11 @@ namespace Assets.Sources.Components
         [field: Tooltip("Max time in seconds to pop a new Game Object")]
         public float MaxPopInterval { get; private set; } = 3f;
 
+        [field: SerializeField]
+        [field: Range(0f, float.MaxValue)]
+        [field: Tooltip("Delay in seconds before to start poping")]
+        public float PopStartDelay { get; private set; } = 0f;
+
         private void Awake()
         {
             if (CheckPopIntervalAvailable() && CheckGameObjectToSpawnAvailable())
@@ -36,6 +41,8 @@ namespace Assets.Sources.Components
 
         private IEnumerator PopGameObjectCoroutine()
         {
+            yield return new WaitForSeconds(PopStartDelay <= 0f ? 0f : PopStartDelay);
+
             while (GameObjectsToSpawn.Any())
             {
                 float randomPercentage = Random.Range(0f, 100f);

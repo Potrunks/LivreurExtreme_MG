@@ -2098,6 +2098,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericSpawnZone7
       objectReference: {fileID: 0}
+    - target: {fileID: 5873379975115069847, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6504951884769273259, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2153,6 +2158,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: <MaxPopInterval>k__BackingField
@@ -3408,6 +3418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericSpawnZone6
       objectReference: {fileID: 0}
+    - target: {fileID: 5873379975115069847, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6504951884769273259, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3463,6 +3478,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: <MaxPopInterval>k__BackingField
@@ -19251,6 +19271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericSpawnZone1
       objectReference: {fileID: 0}
+    - target: {fileID: 5873379975115069847, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6504951884769273259, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19306,6 +19331,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: <MaxPopInterval>k__BackingField
@@ -30681,6 +30711,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericSpawnZone5
       objectReference: {fileID: 0}
+    - target: {fileID: 5873379975115069847, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6504951884769273259, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30736,6 +30771,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: <MaxPopInterval>k__BackingField
@@ -30930,6 +30970,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericSpawnZone4
       objectReference: {fileID: 0}
+    - target: {fileID: 5873379975115069847, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6504951884769273259, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30985,6 +31030,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6604653550846364829, guid: 3a8ea785c2ca86946ba88793d240206a,
         type: 3}
       propertyPath: <MaxPopInterval>k__BackingField
@@ -62901,6 +62951,11 @@ PrefabInstance:
       objectReference: {fileID: 589150073}
     - target: {fileID: 143654122762159086, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 143654122762159086, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
       propertyPath: <GameObjectsToSpawn>k__BackingField.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -62942,6 +62997,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 612471420598792691, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 612471420598792691, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
       propertyPath: <GameObjectsToSpawn>k__BackingField.Array.size
@@ -63064,6 +63124,11 @@ PrefabInstance:
       objectReference: {fileID: 589150073}
     - target: {fileID: 2791556675020734131, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791556675020734131, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
       propertyPath: <GameObjectsToSpawn>k__BackingField.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -63132,6 +63197,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 3719270505845268672, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3719270505845268672, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
       propertyPath: <GameObjectsToSpawn>k__BackingField.Array.size
@@ -63175,6 +63245,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 3896897385787367324, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3896897385787367324, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
       propertyPath: <GameObjectsToSpawn>k__BackingField.Array.size
@@ -63245,6 +63320,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 5011906311583838240, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5011906311583838240, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
       propertyPath: <GameObjectsToSpawn>k__BackingField.Array.size
@@ -63315,6 +63395,11 @@ PrefabInstance:
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 5285056699135728828, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5285056699135728828, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
       propertyPath: <GameObjectsToSpawn>k__BackingField.Array.size
@@ -63412,11 +63497,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriumphArch
       objectReference: {fileID: 0}
+    - target: {fileID: 7212744868995057606, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7407803132882176142, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
       propertyPath: <Container>k__BackingField
       value: 
       objectReference: {fileID: 589150073}
+    - target: {fileID: 7407803132882176142, guid: 4eea9109d152a8648a851951b7131e29,
+        type: 3}
+      propertyPath: <PopStartDelay>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7407803132882176142, guid: 4eea9109d152a8648a851951b7131e29,
         type: 3}
       propertyPath: <GameObjectsToSpawn>k__BackingField.Array.size

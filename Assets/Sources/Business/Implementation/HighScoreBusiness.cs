@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Assets.Sources.Business.Implementation
@@ -33,7 +35,9 @@ namespace Assets.Sources.Business.Implementation
 
                 if (existingHighScores.Count() >= 5 && timeElapsed < existingHighScores.Max(hs => hs.TimeElapsed))
                 {
+#if UNITY_EDITOR
                     AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(existingHighScores.OrderByDescending(hs => hs.TimeElapsed).First()));
+#endif
                     CreateNewHighScore(timeElapsed);
                 }
 
@@ -50,7 +54,9 @@ namespace Assets.Sources.Business.Implementation
             HighScore newHighScore = ScriptableObject.CreateInstance<HighScore>();
             newHighScore.TimeElapsed = timeElapsed;
             newHighScore.IsNew = true;
+#if UNITY_EDITOR
             AssetDatabase.CreateAsset(newHighScore, $"Assets/Resources/ScriptableObjects/SavedDatas/HighScores/{DateTime.UtcNow.Ticks}_high_score.asset");
+#endif
         }
 
         public HighScore[] LoadHighScores()
