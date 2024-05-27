@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Sources.Shared.Entities;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Sources.Business.Interface
 {
@@ -12,11 +14,11 @@ namespace Assets.Sources.Business.Interface
         /// <summary>
         /// Load the all player high scores.
         /// </summary>
-        HighScore[] LoadHighScores();
+        SavedHighScores LoadHighScores();
 
         /// <summary>
         /// Display high scores selected to target canvas using prefab as asset base.
         /// </summary>
-        void DisplayHighScores(GameObject targetCanvas, GameObject highScoreResultPrefab, HighScore[] highScoresToDisplay);
+        void DisplayHighScores(GameObject targetCanvas, GameObject highScoreResultPrefab, List<HighScore> highScoresToDisplay);
     }
 }
