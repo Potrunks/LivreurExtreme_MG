@@ -1,5 +1,6 @@
 using Assets.Sources.Business.Implementation;
 using Assets.Sources.Business.Interface;
+using Assets.Sources.Shared.Entities;
 using UnityEngine;
 
 public class HighScoreDisplaySystem : MonoBehaviour
@@ -14,7 +15,7 @@ public class HighScoreDisplaySystem : MonoBehaviour
 
     public void DisplayHighScores()
     {
-        HighScore[] existingHighScores = _highScoreBusiness.LoadHighScores();
-        _highScoreBusiness.DisplayHighScores(HighScoreListCanvas, HighScoreResultPrefab, existingHighScores);
+        SavedHighScores existingHighScores = _highScoreBusiness.LoadHighScores();
+        _highScoreBusiness.DisplayHighScores(HighScoreListCanvas, HighScoreResultPrefab, existingHighScores.HighScores);
     }
 }

@@ -1,11 +1,13 @@
 ﻿using Assets.Sources.Business.Interface;
+using Assets.Sources.Resources;
+using Assets.Sources.Shared.Entities;
 using Assets.Sources.Shared.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Sources.Business.Implementation
@@ -16,7 +18,8 @@ namespace Assets.Sources.Business.Implementation
         {
             try
             {
-                HighScore[] existingHighScores = LoadHighScores();
+                SavedHighScores savedHighScores = LoadHighScores();
+                List<HighScore> existingHighScores = savedHighScores == null || savedHighScores.HighScores == null ? new List<HighScore>() : savedHighScores.HighScores;
 
                 if (existingHighScores != null)
                 {
@@ -26,15 +29,16 @@ namespace Assets.Sources.Business.Implementation
                     }
                 }
 
-                if (existingHighScores == null || existingHighScores.Count() < 5)
+                if (existingHighScores.Count() < 5)
                 {
-                    CreateNewHighScore(timeElapsed);
+                    CreateNewHighScore(timeElapsed, existingHighScores);
                 }
 
                 if (existingHighScores.Count() >= 5 && timeElapsed < existingHighScores.Max(hs => hs.TimeElapsed))
                 {
-                    AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(existingHighScores.OrderByDescending(hs => hs.TimeElapsed).First()));
-                    CreateNewHighScore(timeElapsed);
+                    HighScore worstHighScore = existingHighScores.OrderByDescending(hs => hs.TimeElapsed).First();
+                    existingHighScores.Remove(worstHighScore);
+                    CreateNewHighScore(timeElapsed, existingHighScores);
                 }
 
                 return new BaseResult(true);
@@ -45,19 +49,33 @@ namespace Assets.Sources.Business.Implementation
             }
         }
 
-        private void CreateNewHighScore(float timeElapsed)
+        private void CreateNewHighScore(float newTimeElapsed, List<HighScore> existingHighScores)
         {
-            HighScore newHighScore = ScriptableObject.CreateInstance<HighScore>();
-            newHighScore.TimeElapsed = timeElapsed;
-            newHighScore.IsNew = true;
-            AssetDatabase.CreateAsset(newHighScore, $"Assets/Resources/ScriptableObjects/SavedDatas/HighScores/{DateTime.UtcNow.Ticks}_high_score.asset");
+            HighScore newHighScore = new HighScore
+            {
+                TimeElapsed = newTimeElapsed,
+                IsNew = true
+            };
+
+            existingHighScores.Add(newHighScore);
+
+            string savedHighScoresJson = JsonUtility.ToJson(new SavedHighScores(existingHighScores));
+
+            File.WriteAllText(PathResources.SAVED_HIGH_SCORES_PATH, savedHighScoresJson);
         }
 
-        public HighScore[] LoadHighScores()
+        public SavedHighScores LoadHighScores()
         {
             try
             {
-                return UnityEngine.Resources.LoadAll<HighScore>("ScriptableObjects/SavedDatas/HighScores");
+                if (!File.Exists(PathResources.SAVED_HIGH_SCORES_PATH))
+                {
+                    File.CreateText(PathResources.SAVED_HIGH_SCORES_PATH);
+                    return new SavedHighScores();
+                }
+
+                string savedHighScoresJson = File.ReadAllText(PathResources.SAVED_HIGH_SCORES_PATH);
+                return JsonUtility.FromJson<SavedHighScores>(savedHighScoresJson);
             }
             catch (Exception e)
             {
@@ -66,7 +84,7 @@ namespace Assets.Sources.Business.Implementation
             }
         }
 
-        public void DisplayHighScores(GameObject targetCanvas, GameObject highScoreResultPrefab, HighScore[] highScoresToDisplay)
+        public void DisplayHighScores(GameObject targetCanvas, GameObject highScoreResultPrefab, List<HighScore> highScoresToDisplay)
         {
             try
             {
@@ -85,7 +103,7 @@ namespace Assets.Sources.Business.Implementation
                     GameObject highScoreResult = UnityEngine.Object.Instantiate(highScoreResultPrefab, targetCanvas.transform);
 
                     TextMeshProUGUI highScoreResultText = highScoreResult.GetComponent<TextMeshProUGUI>();
-                    highScoreResultText.text = "Aucun high score";
+                    highScoreResultText.text = "No high score";
 
                     return;
                 }
