@@ -9209,7 +9209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <RemainingTimerDisplay>k__BackingField: {fileID: 81467996}
   <LostSecondsDisplay>k__BackingField: {fileID: 1930085746}
-  <StartTimer>k__BackingField: 400
+  <StartTimer>k__BackingField: 70
   <ErrorHighlightDisplayDuration>k__BackingField: 0.25
   <LostSecondsDisplayDuration>k__BackingField: 2
   <GameOverEvent>k__BackingField: {fileID: 11400000, guid: ccae2f1143d8cba449b19b84a77164e5,
