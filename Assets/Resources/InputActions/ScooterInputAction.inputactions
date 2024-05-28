@@ -1,0 +1,74 @@
+{
+    "name": "ScooterInputAction",
+    "maps": [
+        {
+            "name": "Drive",
+            "id": "f1850523-000f-4f63-8cbc-94da3777881d",
+            "actions": [
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "9e9eb23e-03d1-4dd8-aac9-d98af44c67c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "9c14f200-a9ff-4719-999f-77d7c6214e87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Swipe",
+                    "type": "PassThrough",
+                    "id": "9936efb1-612d-4624-9c27-12ba02a861ff",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "83135fbe-4001-4997-a34a-92113a66ba53",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1066d9f7-56a6-4b38-88d2-2ef2ae11e32e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ace8d3ef-f34d-4f7a-9294-077522117509",
+                    "path": "<Touchscreen>/primaryTouch/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
